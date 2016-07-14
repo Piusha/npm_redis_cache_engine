@@ -2,7 +2,7 @@
   "name": "RedisCacheEngine",
   "version": "1.0.1",
   "description": "redis cache engine",
-  "main": "CacheEngine.js",
+  "main": "RedisCacheEngine.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
