@@ -2,6 +2,11 @@
 var RedisCacheEngine ={
 	
 	_cacheClient:null,
+    /**
+     * Intialize Redis Cache engine 
+     * @param host
+     * @param port
+     */
 	init:function(host,port){
 		var CacheClient = require('redis');
 		this._cacheClient = CacheClient.createClient(port,host);
