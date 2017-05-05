@@ -7,12 +7,30 @@ var RedisCacheEngine ={
      * @param host
      * @param port
      */
-	init:function(host,port){
+	init:function(host,port,db){
 		var CacheClient = require('redis');
-		this._cacheClient = CacheClient.createClient(port,host);
-        this._cacheClient.on('connect', function() {
-            console.log("CONNECTED TO CACHE_HOST ON :",host,port);
-        });
+        RedisCacheEngine._cacheClient = CacheClient.createClient(port,host);
+        if(typeof db == 'undefined'){
+            RedisCacheEngine._cacheClient.on('connect', function() {
+                console.log("CONNECTED TO CACHE_HOST ON :",host,port);
+            });
+        }else{
+            RedisCacheEngine._cacheClient.select(1,function(err,res){
+                if(err == null){
+                    RedisCacheEngine._cacheClient.set('redisdb', db);
+                    RedisCacheEngine._cacheClient.on('connect', function() {
+                        console.log("CONNECTED TO CACHE_HOST ON :",host,port);
+                    });
+                }else{
+                    console.log(err);
+
+                }
+
+
+            })
+        }
+
+
 
 	},
 
