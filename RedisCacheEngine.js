@@ -18,7 +18,8 @@ var RedisCacheEngine ={
                 console.log("Error " + err);
             });
         }else{
-            RedisCacheEngine._cacheClient.select(db,function(err,res){
+            
+            RedisCacheEngine._cacheClient.select(1,function(err,res){
                 if(err == null){
                     RedisCacheEngine._cacheClient.on('connect', function() {
                         console.log("CONNECTED TO CACHE_HOST ON :",host,port);
@@ -27,15 +28,13 @@ var RedisCacheEngine ={
                     console.log(err);
 
                 }
-
-
             });
             RedisCacheEngine._cacheClient.on("error", function (err) {
                 console.log("Error " + err);
+
             });
+
         }
-
-
 
 	},
 
