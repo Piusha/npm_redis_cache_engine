@@ -1,6 +1,6 @@
 {
   "name": "RedisCacheEngine",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "redis cache engine",
   "main": "RedisCacheEngine.js",
   "scripts": {
